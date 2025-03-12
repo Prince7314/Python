@@ -1,0 +1,290 @@
+
+Solutions for the First Image
+WAP to count the no. of lines, words, and characters in a given text file
+
+python
+Copy
+Edit
+def count_file_content(filename):
+    with open(filename, 'r') as file:
+        lines = file.readlines()
+        num_lines = len(lines)
+        num_words = sum(len(line.split()) for line in lines)
+        num_chars = sum(len(line) for line in lines)
+
+    print(f"Lines: {num_lines}, Words: {num_words}, Characters: {num_chars}")
+
+# Example usage
+# count_file_content("sample.txt")
+WAP to generate 100 random lottery tickets and pick two lucky tickets from it and announce them as Winner and Runner up respectively
+
+python
+Copy
+Edit
+import random
+
+def lottery_draw():
+    tickets = [random.randint(100000, 999999) for _ in range(100)]
+    winners = random.sample(tickets, 2)
+    print(f"Winner: {winners[0]}, Runner-up: {winners[1]}")
+
+lottery_draw()
+WAP to find prime number in given range
+
+python
+Copy
+Edit
+def find_primes(start, end):
+    primes = []
+    for num in range(start, end + 1):
+        if num > 1:
+            for i in range(2, int(num ** 0.5) + 1):
+                if num % i == 0:
+                    break
+            else:
+                primes.append(num)
+    return primes
+
+print(find_primes(10, 50))  # Example range
+WAP a program to plot a chart of given data. Demonstrate use of all colour, marker, linestyle and label. Add text at Lowest SPI.
+
+python
+Copy
+Edit
+import matplotlib.pyplot as plt
+
+x = range(1, 11)
+cxMarks = [8, 9, 6, 3, 5, 7, 4, 1, 2, 6]
+cyMarks = [5, 8, 6, 3, 2, 4, 8, 8, 9, 9]
+
+plt.plot(x, cxMarks, marker='o', linestyle='-', color='r', label='Cx Marks')
+plt.plot(x, cyMarks, marker='s', linestyle='--', color='b', label='Cy Marks')
+plt.xlabel('Index')
+plt.ylabel('Marks')
+plt.legend()
+plt.title('Marks Chart')
+plt.annotate('Lowest SPI', (x[cxMarks.index(min(cxMarks))], min(cxMarks)), textcoords="offset points", xytext=(0, 10), ha='center')
+plt.show()
+WAP to create a class named Students, and initialize attributes like name, age, and grade while creating an object.
+
+python
+Copy
+Edit
+class Students:
+    def __init__(self, name, age, grade):
+        self.name = name
+        self.age = age
+        self.grade = grade
+
+    def display(self):
+        print(f"Name: {self.name}, Age: {self.age}, Grade: {self.grade}")
+
+student1 = Students("Alice", 20, "A")
+student1.display()
+Solutions for the Second Image
+WAP to sort dictionary by key and value
+
+python
+Copy
+Edit
+def sort_dict(data):
+    sorted_by_key = dict(sorted(data.items()))
+    sorted_by_value = dict(sorted(data.items(), key=lambda item: item[1]))
+    print("Sorted by Key:", sorted_by_key)
+    print("Sorted by Value:", sorted_by_value)
+
+sample_dict = {"b": 3, "a": 5, "d": 1, "c": 2}
+sort_dict(sample_dict)
+WAP to display the value of each bar in a bar chart using Matplotlib.
+
+python
+Copy
+Edit
+import matplotlib.pyplot as plt
+
+data = {"A": 10, "B": 15, "C": 7, "D": 20}
+names = list(data.keys())
+values = list(data.values())
+
+plt.bar(names, values, color=['red', 'blue', 'green', 'purple'])
+for i, v in enumerate(values):
+    plt.text(i, v + 0.5, str(v), ha='center')
+plt.xlabel('Categories')
+plt.ylabel('Values')
+plt.title('Bar Chart with Values')
+plt.show()
+WAP to find the longest word(s) in a file.
+
+python
+Copy
+Edit
+def longest_word(filename):
+    with open(filename, 'r') as file:
+        words = file.read().split()
+    longest = max(words, key=len)
+    print(f"Longest Word: {longest}")
+
+# Example usage:
+# longest_word("sample.txt")
+WAP to find tuples which have all positive elements from list of tuple.
+
+python
+Copy
+Edit
+def positive_tuples(lst):
+    return [tup for tup in lst if all(i > 0 for i in tup)]
+
+tuples_list = [(1, 2, 3), (-1, 5, 6), (0, 2, -3), (4, 5, 6)]
+print(positive_tuples(tuples_list))
+Create a Person class with a constructor that takes two arguments name and age. Create a child class Employee that inherits from Person and adds a new attribute salary. Override the init method in Employee to call the parent class's init method using the super() and then initialize the salary attribute.
+
+python
+Copy
+Edit
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+class Employee(Person):
+    def __init__(self, name, age, salary):
+        super().__init__(name, age)
+        self.salary = salary
+
+    def display(self):
+        print(f"Name: {self.name}, Age: {self.age}, Salary: {self.salary}")
+
+emp = Employee("John", 30, 50000)
+emp.display()
+
+
+
+----------------------------------------------------------------------------------------------------------------------------
+
+
+
+import random
+import matplotlib.pyplot as plt
+
+# 1. Count lines, words, and characters in a given text file
+def count_file_content(filename):
+    with open(filename, 'r') as file:
+        lines = file.readlines()
+        num_lines = len(lines)
+        num_words = sum(len(line.split()) for line in lines)
+        num_chars = sum(len(line) for line in lines)
+
+    print(f"Lines: {num_lines}, Words: {num_words}, Characters: {num_chars}")
+
+# 2. Generate 100 random lottery tickets and pick two lucky winners
+def lottery_draw():
+    tickets = [random.randint(100000, 999999) for _ in range(100)]
+    winners = random.sample(tickets, 2)
+    print(f"Winner: {winners[0]}, Runner-up: {winners[1]}")
+
+# 3. Find prime numbers in a given range
+def find_primes(start, end):
+    primes = []
+    for num in range(start, end + 1):
+        if num > 1:
+            for i in range(2, int(num ** 0.5) + 1):
+                if num % i == 0:
+                    break
+            else:
+                primes.append(num)
+    return primes
+
+# 4. Plot a chart with given data
+def plot_chart():
+    x = range(1, 11)
+    cxMarks = [8, 9, 6, 3, 5, 7, 4, 1, 2, 6]
+    cyMarks = [5, 8, 6, 3, 2, 4, 8, 8, 9, 9]
+
+    plt.plot(x, cxMarks, marker='o', linestyle='-', color='r', label='Cx Marks')
+    plt.plot(x, cyMarks, marker='s', linestyle='--', color='b', label='Cy Marks')
+    plt.xlabel('Index')
+    plt.ylabel('Marks')
+    plt.legend()
+    plt.title('Marks Chart')
+    plt.annotate('Lowest SPI', (x[cxMarks.index(min(cxMarks))], min(cxMarks)), textcoords="offset points", xytext=(0, 10), ha='center')
+    plt.show()
+
+# 5. Create a `Students` class with attributes
+class Students:
+    def __init__(self, name, age, grade):
+        self.name = name
+        self.age = age
+        self.grade = grade
+
+    def display(self):
+        print(f"Name: {self.name}, Age: {self.age}, Grade: {self.grade}")
+
+# 6. Sort dictionary by key and value
+def sort_dict(data):
+    sorted_by_key = dict(sorted(data.items()))
+    sorted_by_value = dict(sorted(data.items(), key=lambda item: item[1]))
+    print("Sorted by Key:", sorted_by_key)
+    print("Sorted by Value:", sorted_by_value)
+
+# 7. Display bar chart values using Matplotlib
+def bar_chart():
+    data = {"A": 10, "B": 15, "C": 7, "D": 20}
+    names = list(data.keys())
+    values = list(data.values())
+
+    plt.bar(names, values, color=['red', 'blue', 'green', 'purple'])
+    for i, v in enumerate(values):
+        plt.text(i, v + 0.5, str(v), ha='center')
+    plt.xlabel('Categories')
+    plt.ylabel('Values')
+    plt.title('Bar Chart with Values')
+    plt.show()
+
+# 8. Find the longest word in a file
+def longest_word(filename):
+    with open(filename, 'r') as file:
+        words = file.read().split()
+    longest = max(words, key=len)
+    print(f"Longest Word: {longest}")
+
+# 9. Find tuples with all positive elements
+def positive_tuples(lst):
+    return [tup for tup in lst if all(i > 0 for i in tup)]
+
+# 10. Create `Person` and `Employee` classes
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+class Employee(Person):
+    def __init__(self, name, age, salary):
+        super().__init__(name, age)
+        self.salary = salary
+
+    def display(self):
+        print(f"Name: {self.name}, Age: {self.age}, Salary: {self.salary}")
+
+# Test the functions
+if __name__ == "__main__":
+    # Example usage
+    # count_file_content("sample.txt")  # Uncomment and provide a valid file path
+    lottery_draw()
+    print(find_primes(10, 50))
+    plot_chart()
+
+    student1 = Students("Alice", 20, "A")
+    student1.display()
+
+    sample_dict = {"b": 3, "a": 5, "d": 1, "c": 2}
+    sort_dict(sample_dict)
+    
+    bar_chart()
+
+    # longest_word("sample.txt")  # Uncomment and provide a valid file path
+
+    tuples_list = [(1, 2, 3), (-1, 5, 6), (0, 2, -3), (4, 5, 6)]
+    print(positive_tuples(tuples_list))
+
+    emp = Employee("John", 30, 50000)
+    emp.display()
